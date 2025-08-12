@@ -1,0 +1,67 @@
+/* Sidebar widget Styles */
+.sidebar-widget {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+}
+
+.widget-header {
+    background-color: var(--primary-dark);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px 8px 0 0;
+}
+
+.widget-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.widget-header i {
+    margin-right: 10px;
+}
+
+.widget-body {
+    padding: 20px;
+}
+
+.related-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.related-links li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.related-links li:last-child {
+    border-bottom: none;
+}
+
+.related-links a {
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: block;
+}
+
+.related-links a:hover {
+    color: var(--primary-medium);
+    padding-left: 5px;
+}
+
+.related-links i {
+    color: var(--primary-medium);
+    margin-right: 8px;
+    font-size: 0.8rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .sidebar-widget {
+        margin-top: 30px;
+    }
+}

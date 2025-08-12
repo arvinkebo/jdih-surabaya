@@ -1,0 +1,151 @@
+/* =================================
+   STYLE HALAMAN LOGIN BARU
+   ================================= */
+
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Memastikan video ada di paling belakang */
+    overflow: hidden;
+}
+
+#bg-video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Memastikan video menutupi seluruh layar */
+}
+
+/* Overlay gelap di atas video agar teks mudah dibaca */
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+}
+
+/* Kontainer Utama Form Login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.50);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    backdrop-filter: blur(5px); /* Efek blur pada latar */
+}
+
+.login-logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px;
+}
+
+.login-box h2 {
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+}
+
+.login-form .error-message {
+    color: #dc3545; /* Merah */
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Grup Input dengan Icon */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 50px; /* Padding kiri untuk ruang ikon */
+    border: 1px solid #ddd;
+    border-radius: 50px; /* Bentuk pill */
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #005A9C;
+}
+
+.password-toggle {
+    left: auto !important; /* Menimpa posisi ikon kiri */
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Tombol Login (menggunakan style yang sudah ada) */
+.login-form button[type="submit"] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form button[type="submit"] i {
+    margin-right: 8px;
+}
+
+
+/* Style untuk tombol submit -- Model Baru */
+input[type="submit"],
+button[type="submit"] {
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Warna gradasi ungu ke biru */
+    color: white; /* Teks putih */
+    padding: 15px 30px; /* Ukuran padding diperbesar agar tombol lebih tebal */
+    border: none; /* Tanpa border */
+    border-radius: 50px; /* Ini yang membuat bentuknya menjadi "pill" atau kapsul */
+    cursor: pointer; /* Mengubah kursor menjadi tangan saat di-hover */
+    font-size: 16px;
+    font-weight: bold; /* Teks menjadi tebal */
+    text-transform: uppercase; /* Teks menjadi huruf besar semua */
+    display: inline-block; /* Properti display untuk memastikan shadow terlihat baik */
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.35); /* Efek bayangan (shadow) halus */
+    transition: all 0.3s ease; /* Animasi transisi saat di-hover */
+}
+
+/* Efek hover pada tombol submit -- Model Baru */
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-image: linear-gradient(to right, #2575fc 0%, #6a11cb 100%); /* Balik gradasi saat di-hover */
+    box-shadow: 0 8px 25px 0 rgba(49, 196, 190, 0.45); /* Shadow menjadi lebih jelas saat di-hover */
+    transform: translateY(-2px); /* Tombol sedikit terangkat saat di-hover */
+}

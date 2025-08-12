@@ -1,0 +1,288 @@
+/* Dasar Hukum Page Styles */
+.dasar-hukum-container {
+    padding: 40px 0;
+    max-width: 95vw;
+    margin: 0 auto;
+}
+.container h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    letter-spacing: 0.5;
+    color: var(--black);
+}
+
+/* Breadcrumb Container */
+.custom-breadcrumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background-color: #f5f5f5; /* Warna default light */
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333; /* Warna teks default */
+}
+
+/* Breadcrumb Items */
+.custom-breadcrumb span:not(.divider) {
+    padding: 4px 8px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Link Normal */
+.custom-breadcrumb a {
+    color: #e0e0e0; /* Abu-abu muda */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Link Hover */
+/* .custom-breadcrumb a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.589);
+    text-decoration: none;
+    
+} */
+
+/* Divider - Pastikan Terlihat */
+.custom-breadcrumb .divider {
+    color: #666; 
+    font-weight: bold;
+    display: inline-block; 
+}
+
+/* Active Item */
+/* .custom-breadcrumb .active {
+    color: #1d1d1d;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+} */
+
+/* Dark Mode */
+/* @media (prefers-color-scheme: dark) {
+    .custom-breadcrumb {
+        background-color: #2a2a2a;
+    }
+    .custom-breadcrumb .divider {
+        color: #ccc;
+    } 
+} */
+
+/* Layout Improvements */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -30px;
+}
+
+.col-lg-8, .col-lg-4 {
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.col-lg-8 {
+    flex: 0 0 77%;
+    max-width: 77%;
+    height: fit-content;
+}
+
+.col-lg-4 {
+    flex: 0 0 23%;
+    max-width: 23%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .col-lg-8, .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* =============== KONTEN DASAR HUKUM SECTION =============== */
+.dasar-hukum-content-section {
+    padding: 40px 0;
+    flex: 1;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.hukum-card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.hukum-card .card-header {
+    background-color: var(--primary-dark);
+    color: white;
+    border-radius: 8px 8px 0 0 !important;
+    padding: 15px 20px;
+}
+
+.hukum-card .card-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.hukum-card .card-header i {
+    margin-right: 10px;
+}
+
+.hukum-card .card-body {
+    padding: 10px 30px;
+}
+
+.hukum-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.hukum-item:last-child {
+    border-bottom: none;
+}
+
+.hukum-item h3 {
+    color: var(--primary-dark);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.hukum-item p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Style untuk button group */
+.btn-preview {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 9px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+.btn-preview:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    color: #000;
+}
+
+.btn-preview i {
+    margin-right: 5px;
+}
+
+.btn-download {
+    background-color: var(--primary-light);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;  
+}
+
+.btn-download:hover {
+    background-color: var(--primary-medium);
+    transform: translateY(-2px);
+}
+
+.btn-download i {
+    margin-right: 5px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* backdrop-filter: blur(5px); */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    overflow-y: auto; /* Memungkinkan scroll di dalam modal jika konten terlalu panjang */
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 6px;
+    width: 80%;
+    max-width: 900px;
+    height: 80vh;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-modal:hover {
+    color: #000;
+} 
+
+@media (max-width: 768px) {
+    #pdfViewer {
+        height: 60vh !important;
+    }
+} 
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .col-lg-8, .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .sidebar-widget {
+        margin-top: 30px;
+    }
+}
+
+/* Card Improvements */
+.hukum-card {
+    height: 100%;
+}
+

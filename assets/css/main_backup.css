@@ -1,0 +1,284 @@
+/* Style terpusat untuk Halaman Publik */
+body { 
+    font-family: Oswald, Quicksand; 
+    background-color: #f4f4f4; 
+    color: #333; 
+    margin: 0; 
+    padding: 40px; 
+}
+.container { 
+    max-width: 1200px; 
+    margin: auto; 
+    background-color: white; 
+    padding: 20px 40px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+h1, h2 { 
+    text-align: center; 
+    color: #333; 
+}
+.search-box form { 
+    display: flex; 
+    gap: 10px; 
+    margin: 30px 0; 
+}
+.search-input { 
+    flex-grow: 1; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+}
+.search-button { 
+    padding: 12px 25px; 
+    border: none; 
+    background-color: #007bff; 
+    color: white; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+}
+.search-button:hover { 
+    background-color: #0056b3; 
+}
+.document-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    table-layout: fixed; 
+}
+.document-table th, .document-table td { 
+    border: 1px solid #ddd; 
+    padding: 12px; 
+    text-align: left; 
+    vertical-align: middle; 
+    word-wrap: break-word; 
+}
+.document-table thead { 
+    background-color: #f2f2f2; 
+}
+.document-table th { 
+    font-weight: bold; 
+    text-align: center;
+}
+.document-table .action-btn { 
+    padding: 6px 12px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    text-decoration: none; 
+    font-size: 14px; 
+}
+
+
+
+/* =================================
+   STYLE UNTUK HALAMAN DETAIL PUBLIK
+   ================================= */
+body { 
+    padding: 0;
+}
+ .detail-page-container { 
+    max-width: 900px;
+    /* margin: 40px auto; */
+    /* margin: 10px; */
+    background-color: #fff;
+    padding: 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+
+.detail-container {
+    padding: 10px;
+}
+
+.detail-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    font-size: 1.8em;
+    color: #333;
+    text-align: center;
+}
+
+.detail-row {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 16px;
+    line-height: 1.6;
+    align-items: flex-start;
+}
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    flex-basis: 30%;      /* KUNCI: Memberi lebar tetap 30% untuk semua label */
+    flex-shrink: 0;         /* Mencegah label 'menyusut' jika teks di kanan panjang */
+    font-weight: bold;
+    color: #555;
+}
+
+.detail-value {
+    flex-basis: 70%;      /* KUNCI: Memberi sisa lebar 70% untuk kolom nilai */
+    padding-left: 10px;     /* Memberi sedikit jarak dari titik dua */
+    word-wrap: break-word;  
+    text-align: justify;
+}
+
+/* Style khusus untuk link di dalam detail view */
+.detail-value a {
+    color: #007bff !important;
+    text-decoration: underline !important;
+    font-weight: normal;
+}
+.detail-value a:hover {
+    color: #0056b3 !important;
+}
+
+
+
+/* --- STYLE UNTUK MODAL POP-UP (VERSI ESTETIK) --- */
+
+/* Latar belakang gelap semi-transparan */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dibuat sedikit lebih gelap agar lebih fokus */
+    overflow: auto;
+}
+
+/* Kotak konten modal */
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 25px;
+    border: none; /* Hilangkan border, kita andalkan shadow */
+    border-radius: 15px; /* Sudut lebih melengkung agar modern */
+    width: 80%;
+    max-width: 900px;
+    height: 85vh; /* Sedikit lebih tinggi agar lebih leluasa */
+    position: relative;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    /* KUNCI ANIMASI: Terapkan animasi bernama 'slideDownFadeIn' selama 0.5 detik */
+    animation: slideDownFadeIn 0.5s ease-out forwards;
+}
+
+/* Tombol Tutup (x) */
+.modal-close-button {
+    color: #0c0c0c;
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s; /* Animasi untuk hover */
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+    color: #8d0a0a;
+    text-decoration: none;
+    transform: scale(1.2); /* Tombol sedikit membesar saat disentuh mouse */
+}
+
+/* Iframe di dalam modal */
+.modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Pastikan tidak ada border pada iframe */
+}
+
+/* KUNCI ANIMASI: Ini adalah resep/definisi dari animasi 'slideDownFadeIn' */
+@keyframes slideDownFadeIn {
+    from {
+        transform: translateY(-50px); /* Animasi dimulai dari posisi 50px di atas */
+        opacity: 0; /* Dimulai dari kondisi transparan penuh */
+    }
+    to {
+        transform: translateY(0); /* Berakhir di posisi normal */
+        opacity: 1; /* Berakhir dengan terlihat penuh */
+    }
+}
+
+/* --- Tambahan untuk Animasi Keluar (Fade Out) --- */
+
+/* 1. Definisi dari animasi 'slideUpFadeOut' */
+@keyframes slideUpFadeOut {
+    from {
+        transform: translateY(0); /* Mulai dari posisi normal */
+        opacity: 1;               /* Mulai dengan terlihat penuh */
+    }
+    to {
+        transform: translateY(-50px); /* Berakhir di posisi 50px di atas */
+        opacity: 0;                   /* Berakhir dengan transparan penuh */
+    }
+}
+
+/* 2. Class untuk memicu animasi keluar saat ditambahkan oleh JavaScript */
+.modal.is-closing .modal-content {
+    animation: slideUpFadeOut 0.4s ease-in forwards;
+}
+
+
+
+/* --- STYLE UNTUK PAGINATION --- */
+.pagination-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.pagination {
+    display: inline-flex;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.page-link {
+    color: #007bff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    transition: background-color 0.2s;
+}
+.page-link:hover {
+    background-color: #e9ecef;
+}
+.page-link.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    cursor: default;
+}
+.page-link:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.page-link:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.pagination-controls {
+    margin-bottom: 20px;
+    text-align: right;
+    font-size: 14px;
+    color: #555;
+}
+.per-page-form select {
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
