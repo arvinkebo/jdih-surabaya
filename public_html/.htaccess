@@ -1,0 +1,22 @@
+# Aktifkan mesin rewrite URL
+RewriteEngine On
+
+# --- Pengaturan Error Handling (Tetap sama) ---
+# php_flag display_errors Off
+php_flag log_errors On
+php_value error_log /logs/php_errors.log
+
+# --- Aturan Routing ke Front Controller ---
+
+# Atur basis URL. PENTING!
+# Untuk XAMPP: /jdih-surabaya/public_html/
+# Untuk hosting production: /
+RewriteBase /jdih-surabaya/public_html/
+
+# Abaikan aturan jika permintaan adalah untuk file yang benar-benar ada
+RewriteCond %{REQUEST_FILENAME} !-f
+# Abaikan aturan jika permintaan adalah untuk direktori yang benar-benar ada
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Arahkan semua permintaan lainnya ke index.php
+RewriteRule ^(.*)$ index.php [L,QSA]
