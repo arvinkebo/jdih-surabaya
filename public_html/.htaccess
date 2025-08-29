@@ -1,17 +1,43 @@
 # Aktifkan mesin rewrite URL
 RewriteEngine On
 
-# --- Pengaturan Error Handling (Tetap sama) ---
+# ✅ TAMBAHKAN RULE LOGOUT INI
+RewriteRule ^admin-logout$ admin_dan_login/logout.php [L]
+
+# ✅ RULE BARU UNTUK ADMIN - TAMBAHKAN DI ATAS
+# 1. Aturan untuk halaman login admin
+# Mengarahkan http://jdih-surabaya.test/login ke file login.php
+RewriteRule ^login/?$ admin_dan_login/login.php [L]
+
+# 2. Aturan untuk proses login
+# Mengarahkan form action ke file proses_login.php
+RewriteRule ^proses-login/?$ admin_dan_login/proses_login.php [L]
+
+# 3. Aturan untuk logout admin
+# Mengarahkan http://jdih-surabaya.test/logout ke file logout.php
+RewriteRule ^logout/?$ admin_dan_login/logout.php [L]
+
+# 4. Aturan untuk semua halaman di dalam dashboard admin
+# Mengarahkan http://jdih-surabaya.test/admin/dashboard, /admin/arsip, dll.
+# ke file index.php di dalam folder admin.
+RewriteRule ^admin/(.*)$ admin_dan_login/admin/index.php?route=$1 [QSA,L]
+
+# Aturan untuk API search admin
+RewriteRule ^admin/api_search/?$ admin_dan_login/admin/admin_search_api.php [L,QSA]
+
+# --- HAPUS ATAU KOMENTARI PENGGUNAAN php_flag dan php_value ---
+# Pengaturan error handling ini tidak bekerja di Laragon
+# Lebih baik setel di php.ini Laragon
 # php_flag display_errors Off
-php_flag log_errors On
-php_value error_log /logs/php_errors.log
+# php_flag log_errors On
+# php_value error_log /logs/php_errors.log
 
 # --- Aturan Routing ke Front Controller ---
 
 # Atur basis URL. PENTING!
 # Untuk XAMPP: /jdih-surabaya/public_html/
 # Untuk hosting production: /
-RewriteBase /jdih-surabaya/public_html/
+RewriteBase /
 
 # Abaikan aturan jika permintaan adalah untuk file yang benar-benar ada
 RewriteCond %{REQUEST_FILENAME} !-f

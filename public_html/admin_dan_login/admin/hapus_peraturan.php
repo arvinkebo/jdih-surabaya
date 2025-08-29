@@ -1,18 +1,21 @@
 <?php
-session_start();
+// session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header('Location: ../login.php');
+    header('Location: /login');
     exit;
 }
 
 require_once __DIR__ . '/../../../config/koneksi.php';
 
 if (!isset($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-    header("Location: index_admin.php?error=invalid_id");
+    // ✅ REDIRECT KE ROUTE DASHBOARD
+    header("Location: /admin/dashboard?error=invalid_id");
     exit;
 }
 
+
 $id = $_GET['id'];
+$username = $_SESSION['username']; // Ambil username dari sesi
 
 // Ambil data sebelum dihapus untuk notifikasi
 $query = "SELECT tentang FROM peraturan WHERE id = ?";
@@ -50,13 +53,15 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {
-    header("Location: index_admin.php?sukses=1&action=hapus&judul=" . urlencode($judul));
+    // ✅ REDIRECT KE ROUTE DASHBOARD DENGAN PARAMETER SUKSES
+    header("Location: /admin/dashboard?sukses=1&action=hapus&judul=" . urlencode($judul));
     exit();
-} else {
-    header("Location: index_admin.php?error=1");
+    } else {
+    // ✅ REDIRECT KE ROUTE DASHBOARD DENGAN PARAMETER ERROR
+    header("Location: /admin/dashboard?error=1");
     exit();
 }
-
-$stmt->close();
+$stmt_update->close();
 $conn->close();
+exit();
 ?>

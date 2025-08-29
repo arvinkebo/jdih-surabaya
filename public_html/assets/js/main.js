@@ -50,15 +50,32 @@ function initSearch() {
       if (result.success) {
         renderTable(result.data);
         renderPagination(result.pagination);
+        updateSearchResultInfo(result.pagination.total_records, currentKeyword);
       } else {
         throw new Error(result.message || "Gagal memuat data.");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
       documentTableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color: red;">${error.message}</td></tr>`;
+      updateSearchResultInfo(0, currentKeyword);
     }
   }
-
+// Fungsi baru untuk update informasi hasil pencarian
+  function updateSearchResultInfo(totalRecords, keyword) {
+      const searchResultInfo = document.getElementById('searchResultInfo');
+      if (!searchResultInfo) return;
+      
+      if (keyword && totalRecords > 0) {
+          searchResultInfo.innerHTML = `Hasil pencarian untuk: <strong>${escapeHtml(keyword)}</strong> (${totalRecords} hasil ditemukan)`;
+          searchResultInfo.style.display = 'block';
+      } else if (keyword && totalRecords === 0) {
+          searchResultInfo.innerHTML = `Hasil pencarian untuk: <strong>${escapeHtml(keyword)}</strong> (0 hasil ditemukan)`;
+          searchResultInfo.style.display = 'block';
+      } else {
+          searchResultInfo.style.display = 'none';
+      }
+  }
+  
   function renderTable(data) {
     documentTableBody.innerHTML = "";
     if (data.length === 0) {

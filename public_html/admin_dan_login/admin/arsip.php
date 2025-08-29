@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
     header("Location: ../login.php");
     exit;
@@ -79,9 +79,9 @@ if (isset($_GET['error'])) {
                     echo "<td>" . htmlspecialchars($data['status']) . "</td>";
                     echo "<td>" . ($data['is_deleted'] == 1 ? 'Di Tempat Sampah' : 'Tidak Aktif') . "</td>";
                     echo '<td class="cell-aksi">';
-                    echo '<a href="detail_peraturan.php?id=' . $data['id'] . '" class="action-button history">Lihat Detail</a>';
+                    echo '<a href="/admin/detail?id=' . $data['id'] . '" class="action-button-detail history">Lihat Detail</a>';
                     if ($data['is_deleted'] == 1) {
-                        echo '<a href="pulihkan_peraturan.php?id=' . $data['id'] . '" class="action-button edit btn-pulihkan">Pulihkan</a>';
+                        echo '<a href="/admin/proses_pulihkan?id=' . $data['id'] . '" class="action-button-detail edit btn-pulihkan">Pulihkan</a>';
                     }
                     echo '</td>';
                     echo "</tr>";

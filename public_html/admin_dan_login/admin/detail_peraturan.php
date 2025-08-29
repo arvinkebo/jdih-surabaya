@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 // Pastikan hanya admin yang sudah login yang bisa mengakses halaman ini
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
     header('Location: ../login.php');

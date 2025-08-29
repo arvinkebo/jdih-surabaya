@@ -1,8 +1,8 @@
 <?php
 // "Penjaga" Halaman Admin
-session_start();
+// session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header("Location: ../login.php");
+    header('Location: /login');
     exit;
 }
 
@@ -17,8 +17,8 @@ $semua_peraturan = mysqli_fetch_all($result_list_peraturan, MYSQLI_ASSOC);
 <?php include '../template/header.php'; ?>
 
     <div class="vertical-form-container">
-        <h2>Tambah Produk Hukum Baru</h2>
-        <form action="proses_upload.php" method="post" enctype="multipart/form-data" id="verticalForm">
+        <h2 class="section-title">Tambah Dokumen Baru</h2>
+        <form action="proses_upload" method="post" enctype="multipart/form-data" id="verticalForm">
             <!-- Informasi Umum -->
             <div class="form-section">
                 <h2 class="section-title">Informasi Umum</h2>

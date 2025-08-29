@@ -1,7 +1,7 @@
 <?php
 // PERBAIKAN: Menghapus pemanggilan koneksi yang berlebihan.
 // Koneksi sekarang hanya dipanggil sekali di file utama seperti home.php.
-
+$base_url = 'http://jdih-surabaya.test/';
 // Cek jika variabel sudah ada sebelum mendefinisikannya
 if (!isset($base_url)) {
     // Fallback jika header dipanggil dari file lain
@@ -44,17 +44,17 @@ if (!isset($base_url)) {
                         </a>
                     </li> -->
                     <li class="nav-item main-menu__nav_sub dropdown">
-                        <a class="animation nav-padding dropdown-toggle" href="/home">
+                        <a class="animation nav-padding dropdown-toggle" href="/">
                             <i class="fas fa-home"></i> BERANDA
                             <span class="dropdown-arrow">
                                 <i class="fas fa-chevron-down"></i>
                             </span>
                         </a>
                         <ul class="dropdown-menu main-menu__dropdown">
-                            <li><a class="dropdown-item" href="/home#statistik-dokumen-hukum" data-section="statistik-dokumen-hukum"><i class="fas fa-chart-bar"></i> Statistik Dokumen Hukum</a></li>
-                            <li><a class="dropdown-item" href="/home#cari-produk-hukum" data-section="cari-produk-hukum"><i class="fas fa-search"></i> Cari Produk Hukum</a></li>
-                            <li><a class="dropdown-item" href="/home#portal-jdih" data-section="portal-jdih"><i class="fas fa-book"></i> Portal JDIH</a></li>
-                            <li><a class="dropdown-item" href="/home#situs-terkait" data-section="situs-terkait"><i class="fas fa-external-link-alt"></i> Situs Terkait</a></li>
+                            <li><a class="dropdown-item" href="/#statistik-dokumen-hukum" data-section="statistik-dokumen-hukum"><i class="fas fa-chart-bar"></i> Statistik Dokumen Hukum</a></li>
+                            <li><a class="dropdown-item" href="/#cari-produk-hukum" data-section="cari-produk-hukum"><i class="fas fa-search"></i> Cari Produk Hukum</a></li>
+                            <li><a class="dropdown-item" href="/#portal-jdih" data-section="portal-jdih"><i class="fas fa-book"></i> Portal JDIH</a></li>
+                            <li><a class="dropdown-item" href="/#situs-terkait" data-section="situs-terkait"><i class="fas fa-external-link-alt"></i> Situs Terkait</a></li>
                         </ul>
                         <script>
                             $(document).ready(function() {

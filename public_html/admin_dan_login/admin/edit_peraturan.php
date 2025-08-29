@@ -1,7 +1,8 @@
 <?php
-session_start();
+// session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header("Location: ../login.php");
+    // PERBAIKI REDIRECT: Arahkan ke /login
+    header("Location: /login");
     exit;
 }
 
@@ -40,7 +41,7 @@ $stmt_list->close();
 
     <div class="vertical-form-container">
         <h2 class="section-title">Edit Produk Hukum</h2>
-        <form action="proses_edit.php" method="post" enctype="multipart/form-data" id="verticalForm">
+        <form action="proses_edit" method="post" enctype="multipart/form-data" id="verticalForm">
             <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
             
             <!-- Informasi Umum -->
@@ -191,7 +192,8 @@ $stmt_list->close();
                 <div class="form-group">
                     <label>File PDF Saat Ini:</label>
                     <div class="current-file">
-                        <a href="../../uploads/<?php echo htmlspecialchars($data['file_path']); ?>" target="_blank" class="file-link">
+                        <!-- PERBAIKI LINK FILE: Gunakan path absolut dari root -->
+                        <a href="/uploads/<?php echo htmlspecialchars($data['file_path']); ?>" target="_blank" class="file-link">
                             <i class="fas fa-file-pdf"></i> <?php echo htmlspecialchars($data['file_path']); ?>
                         </a>
                     </div>

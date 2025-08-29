@@ -1,11 +1,9 @@
 <?php
 session_start();
-
-// Hapus semua data session
 session_unset();
 session_destroy();
 
-// Arahkan kembali ke halaman login
-header("Location: login.php");
+// ✅ REDIRECT YANG BENAR - ke URL route login admin
+header("Location: /login");
 exit();
 ?>

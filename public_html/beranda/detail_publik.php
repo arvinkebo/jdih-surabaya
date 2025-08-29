@@ -5,7 +5,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Error: ID Peraturan tidak valid.");
 }
 $id_peraturan = $_GET['id'];
-$base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/jdih-surabaya/public_html/';
+$base_url = 'http://jdih-surabaya.test/';
 
 // Query untuk mengambil detail lengkap
 $sql = "SELECT * FROM peraturan WHERE id = ? AND is_deleted = 0";

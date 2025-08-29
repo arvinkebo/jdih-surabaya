@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../config/koneksi.php';
     
 </head>
 <body>
-<?php include '../beranda/templates/header.php'; ?>
+<?php include 'beranda/templates/header.php'; ?>
 <main class="dasar-hukum-container">
     <section class="page-header">
     <div class="container">
@@ -145,13 +145,13 @@ require_once __DIR__ . '/../../config/koneksi.php';
                     </script>
                 </div>
                     <div class="col-lg-4">
-                        <?php include '../beranda/templates/sidebar-widgets.php'; ?>
+                        <?php include 'beranda/templates/sidebar-widgets.php'; ?>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
-    <?php include '../beranda/templates/footer.php'; ?>
+    <?php include 'beranda/templates/footer.php'; ?>
 </body>
 </html>

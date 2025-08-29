@@ -1,14 +1,16 @@
 <?php
 // public_html/index.php
+require_once '../config/koneksi.php';
 
 // 1. Ambil path URL yang diminta
-$request_uri = trim($_SERVER['REQUEST_URI'], '/');
+$request_uri = strtok($_SERVER['REQUEST_URI'], '?');
+$request_uri = trim($request_uri, '/');
 
 // 2. Hapus nama subfolder jika berjalan di XAMPP
-$base_path = 'jdih-surabaya/public_html';
-if (strpos($request_uri, $base_path) === 0) {
-    $request_uri = substr($request_uri, strlen($base_path));
-}
+// $base_path = 'jdih-surabaya/public_html';
+// if (strpos($request_uri, $base_path) === 0) {
+//     $request_uri = substr($request_uri, strlen($base_path));
+// }
 $request_uri = trim($request_uri, '/');
 
 // 3. Pecah URL menjadi beberapa bagian
@@ -16,6 +18,7 @@ $parts = explode('/', $request_uri);
 $page = $parts[0] ?? 'home';
 $action = $parts[1] ?? null;
 $id = $parts[2] ?? null;
+$query_params = $_GET;
 
 // 4. Logika Routing
 $file_to_include = null;

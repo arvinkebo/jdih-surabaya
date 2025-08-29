@@ -1,10 +1,17 @@
 <?php
 // --- SETUP AWAL ---
-require_once __DIR__ . '/../../config/koneksi.php';
-$base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/jdih-surabaya/public_html/';
+// require_once __DIR__ . '/../../config/koneksi.php';
+// Untuk Laragon
+$base_url = 'http://jdih-surabaya.test/';
+// atau lebih dinamis:
+// $base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 
 // --- LOGIKA PENGAMBILAN DATA SLIDESHOW ---
-$image_dir = dirname(dirname(__DIR__)) . '/public_html/assets/images/slider/';
+// Path yang benar untuk Laragon
+$image_dir = __DIR__ . '/../assets/images/slider/';
+// atau
+// $image_dir = dirname(__DIR__) . '/assets/images/slider/';
+
 $image_files = [];
 if (is_dir($image_dir)) {
     $files = scandir($image_dir);
@@ -92,7 +99,7 @@ foreach ($jenis_dokumen_list as $tipe) {
             <div class="search-and-controls">
                 <div class="search-box-container">
                     <form id="searchForm" class="search-form">
-                        <input type="text" id="searchInput" placeholder="Ketik judul, tipe, atau nomor peraturan...">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Ketik judul, tipe, atau nomor peraturan..." value="<?php echo !empty($keyword) ? htmlspecialchars($keyword) : ''; ?>">
                         <button type="submit" class="search-button">Cari</button>
                     </form>
                 </div>
@@ -107,6 +114,7 @@ foreach ($jenis_dokumen_list as $tipe) {
                         <label for="perPageSelect">data per halaman</label>
                     </form>
                 </div>
+                <div id="searchResultInfo" style="display: none;"></div>
             </div>
             <div class="document-table-container">
                 <table class="document-table">

@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../config/koneksi.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<?php include '../beranda/templates/header.php'; ?>
+<?php include 'beranda/templates/header.php'; ?>
 <main class="sejarah-jdihn-container">
     <section class="page-header">
     <div class="container">
@@ -113,13 +113,13 @@ require_once __DIR__ . '/../../config/koneksi.php';
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <?php include '../beranda/templates/sidebar-widgets.php'; ?>
+                    <?php include 'beranda/templates/sidebar-widgets.php'; ?>
                 </div>
             </div>
         </div>
     </section>
 </main>
-    <?php include '../beranda/templates/footer.php'; ?>
+    <?php include 'beranda/templates/footer.php'; ?>
     <script src="../assets/js/profil/sejarah-jdihn.js"></script>
 </body>
 </html>

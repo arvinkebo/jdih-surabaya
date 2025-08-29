@@ -1,7 +1,8 @@
 <?php
-session_start();
+// session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header("Location: ../login.php");
+    // PERBAIKI REDIRECT: Arahkan ke /login
+    header("Location: /login");
     exit;
 }
 
@@ -43,28 +44,24 @@ $file_path = $_POST['file_path_current']; // Default ke file yang sudah ada
 
 // Handle file upload jika ada file baru
 if (!empty($_FILES['file_pdf']['name']) && $_FILES['file_pdf']['error'] == UPLOAD_ERR_OK) {
-    $target_dir = "../../uploads/";
-    $file_name = basename($_FILES['file_pdf']['name']);
+    // PERBAIKAN UTAMA: Gunakan path yang benar ke folder uploads
+    $target_dir = dirname(__DIR__, 2) . '/uploads/';
     $file_tmp = $_FILES['file_pdf']['tmp_name'];
-    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+    $file_ext = strtolower(pathinfo($_FILES['file_pdf']['name'], PATHINFO_EXTENSION));
     
-    // Validasi file PDF
-    if ($file_ext != 'pdf') {
-        die("Hanya file PDF yang diizinkan.");
-    }
+    if ($file_ext != 'pdf') die("Hanya file PDF yang diizinkan.");
     
-    // Generate unique filename
     $new_file_name = uniqid() . '-' . time() . '.' . $file_ext;
     $target_file = $target_dir . $new_file_name;
     
     if (move_uploaded_file($file_tmp, $target_file)) {
-        $file_path = $new_file_name;
-        // Hapus file lama jika ada dan bukan file default
-        if (!empty($_POST['file_path_current']) && file_exists($target_dir . $_POST['file_path_current'])) {
-            @unlink($target_dir . $_POST['file_path_current']);
+        // Hapus file lama jika ada
+        if (!empty($file_path) && file_exists($target_dir . $file_path)) {
+            @unlink($target_dir . $file_path);
         }
+        $file_path = $new_file_name; // Update nama file di database dengan yang baru
     } else {
-        die("Maaf, terjadi error saat upload file.");
+        die("Maaf, terjadi error saat upload file pengganti.");
     }
 }
 
@@ -128,10 +125,10 @@ $stmt->bind_param(
 
 if ($stmt->execute()) {
     $_SESSION['success_message'] = "Data peraturan berhasil diperbarui.";
-    header("Location: index_admin.php?sukses=1&action=edit&judul=" . urlencode($_POST['tentang']));
+    header("Location: /admin/dashboard?sukses=1&action=edit&judul=" . urlencode($_POST['tentang']));
     exit();
 } else {
-    header("Location: edit_peraturan.php?id=$id&error=1");
+    header("Location: /admin/edit?id=$id&error=1");
     exit();
 }
 

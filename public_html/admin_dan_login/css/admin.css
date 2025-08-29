@@ -957,6 +957,71 @@ tr:hover {
     }
 }
 
+/* ===========BUTTON ARSIP============ */
+
+.action-button-detail {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    padding: 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dark-color);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.action-button-detail:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow);
+}
+
+.action-button-detail i {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.action-button-detail span {
+    font-weight: 500;
+}
+
+.action-button-pulihkan {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    padding: 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dark-color);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.action-button-pulihkan:hover {
+    border-color: var(--success-color);
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow);
+}
+
+.action-button-pulihkan i {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.action-button-pulihkan span {
+    font-weight: 500;
+}
 /* Style Halaman Detail & Riwayat */
 .detail-container {
     background-color: white;

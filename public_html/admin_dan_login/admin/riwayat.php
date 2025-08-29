@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 // PERBAIKAN: Menyamakan nama session
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
     header("Location: ../login.php");

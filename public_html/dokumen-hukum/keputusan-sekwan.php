@@ -27,7 +27,7 @@ if (!empty($keyword)) {
 $query .= " LIMIT ? OFFSET ?";
 
 // Hitung total data
-$stmt_count = $koneksi->prepare($count_query);
+$stmt_count = $conn->prepare($count_query);
 if (!empty($keyword)) {
     $stmt_count->bind_param("sss", $search, $search, $search);
 }
@@ -36,7 +36,7 @@ $total_result = $stmt_count->get_result()->fetch_assoc()['total'];
 $total_pages = ceil($total_result / $per_page);
 
 // Ambil data
-$stmt = $koneksi->prepare($query);
+$stmt = $conn->prepare($query);
 if (!empty($keyword)) {
     $stmt->bind_param("sssii", $search, $search, $search, $per_page, $offset);
 } else {
@@ -52,16 +52,16 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keputusan Sekretaris DPRD Kota Surabaya</title>
-    <link rel="stylesheet" href="../assets/css/dokumen-hukum/keputusan-sekwan.css">
+    <link rel="stylesheet" href="/assets/css/dokumen-hukum/keputusan-sekwan.css">
 </head>
 <body>
-<?php include '../beranda/templates/header.php'; ?>
+<?php include 'beranda/templates/header.php'; ?>
 <main class="kep-sekwan-container">
     <section class="page-header">
     <div class="container">
         <h1>Keputusan Sekretaris DPRD</h1>
         <div class="custom-breadcrumb">
-            <span><a href="../beranda/home.php">Beranda</a></span>
+            <span><a href="">Beranda</a></span>
             <span class="divider">/</span>
             <span><a href="#">Dokumen Hukum</a></span>
             <span class="divider">/</span>
@@ -76,7 +76,7 @@ $result = $stmt->get_result();
                 <div class="col-lg-8">
                     <div class="dokumen-hukum-search-and-controls">
                         <div class="dokumen-hukum-search-box-container">
-                            <form action="keputusan-sekwan.php" method="get" class="search-form" id="searchForm">
+                            <form action="" method="get" class="search-form" id="searchForm">
                                 <input type="text" name="keyword" class="search-input" id="searchInput"
                                     placeholder="Ketik judul, nomor, atau tahun peraturan..." 
                                     value="<?php echo htmlspecialchars($keyword); ?>">
@@ -84,7 +84,7 @@ $result = $stmt->get_result();
                             </form>
                         </div>
                         <div class="pagination-controls-container">
-                            <form action="keputusan-sekwan.php" method="get" class="per-page-form" id="perPageForm">
+                            <form action="" method="get" class="per-page-form" id="perPageForm">
                                 <input type="hidden" name="keyword" value="<?php echo htmlspecialchars($keyword); ?>">
                                 <label for="perPageSelect">Tampilkan:</label>
                                 <select name="per_page" id="perPageSelect" onchange="this.form.submit()">
@@ -106,7 +106,7 @@ $result = $stmt->get_result();
                             <thead>
                                 <tr>
                                     <th style="width: 5%;">NO</th>
-                                    <th style="width: 15%;">JENIS PERATURAN</th>
+                                    <th style="width: 15%;">JENIS DOKUMEN</th>
                                     <th style="width: 10%;">NOMOR</th>
                                     <th style="width: 10%;">TAHUN</th>
                                     <th>JUDUL</th>
@@ -165,7 +165,7 @@ $result = $stmt->get_result();
                         <?php endif; ?>
                     </div>
                     <div class="col-lg-4">
-                        <?php include '../beranda/templates/sidebar-widgets.php'; ?>
+                        <?php include 'beranda/templates/sidebar-widgets.php'; ?>
                     </div>
                 </div>
             </div>
@@ -244,6 +244,6 @@ $result = $stmt->get_result();
         </div>
     </div>
 </main>
-    <?php include '../beranda/templates/footer.php'; ?>
+    <?php include 'beranda/templates/footer.php'; ?>
 </body>
 </html>

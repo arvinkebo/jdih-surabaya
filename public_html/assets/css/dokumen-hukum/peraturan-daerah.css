@@ -240,7 +240,8 @@
     color: #fff;
     padding: 15px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.3mm;
 }
 
 .document-table td {

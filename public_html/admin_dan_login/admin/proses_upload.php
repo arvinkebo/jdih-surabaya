@@ -1,7 +1,8 @@
 <?php
-session_start();
+// session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header('Location: ../login.php');
+    // PERBAIKI REDIRECT: Arahkan ke /login
+    header('Location: /login');
     exit;
 }
 
@@ -47,26 +48,23 @@ $mengubah_id = !empty($_POST['mengubah_id']) ? (int)$_POST['mengubah_id'] : NULL
 
 // Proses upload file PDF
 $file = $_FILES['file_path'];
-$nama_file = $file['name'];
-$ukuran_file = $file['size'];
 $tmp_file = $file['tmp_name'];
 $error = $file['error'];
 
 if ($error !== UPLOAD_ERR_OK) {
-    die("Error saat mengunggah file.");
+    die("Error saat mengunggah file. Kode: " . $error);
 }
 
-$ekstensi_file = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+$ekstensi_file = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 if ($ekstensi_file !== 'pdf') {
     die("Hanya file PDF yang diizinkan.");
 }
 
-if ($ukuran_file > 10 * 1024 * 1024) { // Ubah ke 10MB sesuai form
-    die("Ukuran file maksimal 10MB.");
-}
-
 $nama_file_unik = uniqid() . '-' . time() . '.' . $ekstensi_file;
-$tujuan_upload = '../../uploads/' . $nama_file_unik;
+
+// PERBAIKAN UTAMA: Path yang benar ke C:\laragon\www\jdih-surabaya\public_html\uploads
+// Dari folder 'admin', kita naik 2 level untuk sampai ke 'public_html'
+$tujuan_upload = dirname(__DIR__, 2) . '/uploads/' . $nama_file_unik;
 
 if (move_uploaded_file($tmp_file, $tujuan_upload)) {
     // Query INSERT dengan semua field baru
@@ -94,15 +92,17 @@ if (move_uploaded_file($tmp_file, $tujuan_upload)) {
 
     if ($stmt->execute()) {
         // Redirect dengan parameter sukses
-        header('Location: index_admin.php?sukses=1&action=tambah&judul=' . urlencode($tentang));
+        header('Location: /admin/dashboard?sukses=1&action=tambah&judul=' . urlencode($tentang));
         exit();
     } else {
-        header('Location: tambah_peraturan.php?error=1');
+        header('Location: /admin/tambah?error=1');
         exit();
     }
 } else {
     die("Gagal memindahkan file yang diunggah.");
 }
 
+$stmt->close();
 $conn->close();
+exit();
 ?>

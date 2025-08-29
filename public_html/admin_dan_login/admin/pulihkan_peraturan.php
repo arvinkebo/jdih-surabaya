@@ -1,14 +1,15 @@
 <?php
 session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header("Location: ../login.php");
+    header("Location: /login");
     exit;
 }
 
 require_once __DIR__ . '/../../../config/koneksi.php';
 
 if (!isset($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-    header("Location: arsip.php?error=invalid_id");
+    // PERBAIKI REDIRECT: Arahkan ke route arsip
+    header("Location: /admin/arsip?error=invalid_id");
     exit;
 }
 
@@ -76,10 +77,10 @@ if ($stmt_restore->execute()) {
     }
     
     // Redirect dengan parameter sukses untuk notifikasi
-    header("Location: arsip.php?sukses=1&action=pulihkan&judul=" . urlencode($judul));
+    header("Location: /admin/arsip?sukses=1&action=pulihkan&judul=" . urlencode($judul));
         exit();
     } else {
-        header("Location: arsip.php?error=1");
+        header("Location: /admin/arsip?error=1");
         exit();
     }
 

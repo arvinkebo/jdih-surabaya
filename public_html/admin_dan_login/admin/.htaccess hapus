@@ -1,0 +1,17 @@
+RewriteEngine On
+RewriteBase /jdih-surabaya/public_html/admin_dan_login/admin/
+
+# Block direct access to sensitive files
+<Files ~ "\.(env|config|log|sql|bak|backup)$">
+    Deny from all
+</Files>
+
+# Security - block direct access to process files
+<FilesMatch "^(proses_|hapus_|pulihkan_)">
+    Deny from all
+</FilesMatch>
+
+# Redirect all requests to index.php for routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
